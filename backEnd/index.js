@@ -13,6 +13,7 @@ import nodemailer from 'nodemailer' // zum versenden von Emails
 import { getDb } from './util/db.js'  // zum Datebankverbindung aufbauen zu MongoDB
 
 import { getFreunde, postFreunde } from './controller/freundeController.js'
+import { createFreundeValid, postFreundeValid } from './controller/freundeValidController.js'
 
 /// ! render.com ??
 // ! react => "serve": "npx serve -s ./build"
@@ -100,6 +101,12 @@ const COL_EMAIL = 'email'
 // !     Freunde           // getFreunde fetch in Ordner Controller -> freundeController.js
 app.get('/api/v1/getFreunde', getFreunde)   
 app.post('/api/v1/postFreunde', postFreunde) 
+
+//       FreundeValid  //!  mit MonogoDB validator und $jsonSchema
+// ! create nur 1x ausführen, dann in DB speichern und dann nur noch updaten
+app.post('/api/v1/createFreundeValid', createFreundeValid)
+// ! updaten
+app.post('/api/v1/postFreundeValid', postFreundeValid)
 
 
 

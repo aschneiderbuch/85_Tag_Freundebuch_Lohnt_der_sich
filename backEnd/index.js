@@ -113,3 +113,5 @@ app.post('/api/v1/postFreunde', postFreunde)
 app.listen(BACKEND_PORT, () => {
     console.log(`Server läuft auf Port: ${BACKEND_PORT}`)
 })
+
+//test

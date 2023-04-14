@@ -13,7 +13,7 @@ import nodemailer from 'nodemailer' // zum versenden von Emails
 import { getDb } from './util/db.js'  // zum Datebankverbindung aufbauen zu MongoDB
 
 import { getFreunde, postFreunde } from './controller/freundeController.js'
-import { createFreundeValid, postFreundeValid } from './controller/freundeValidController.js'
+import { createFreundeValid, postFreundeValid, getFreundeValid } from './controller/freundeValidController.js'
 
 /// ! render.com ??
 // ! react => "serve": "npx serve -s ./build"
@@ -52,7 +52,7 @@ const transport = nodemailer.createTransport({
 app.use(morgan('dev'))
 
 // Sicherheit CORS    // ! macht evtl. bei Render.com Probleme
-const CORS_WHITELIST = process.env.CORS_WHITELIST.split(',')    // aus .env Datei
+const CORS_WHITELIST = process.env.CORS_WHITELIST    // aus .env Datei
 app.use(cors({ origin: CORS_WHITELIST }))
 
 
@@ -107,6 +107,7 @@ app.post('/api/v1/postFreunde', postFreunde)
 app.post('/api/v1/createFreundeValid', createFreundeValid)
 // ! updaten
 app.post('/api/v1/postFreundeValid', postFreundeValid)
+app.get('/api/v1/getFreundeValid', getFreundeValid)
 
 
 

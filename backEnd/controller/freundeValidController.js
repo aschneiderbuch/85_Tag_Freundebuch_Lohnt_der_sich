@@ -92,3 +92,16 @@ export const postFreundeValid = async (req, res) => {
         res.status(594).send({ message: `Fehler bei postFreundeValid: ${err}`})
     }
 }
+
+
+export const getFreundeValid = async (req, res) => {
+    try{
+        const db = await getDb()
+        const freunde = await db.collection(COL_FREUNDE_VALID).find().toArray()
+        console.log(freunde)
+        res.status(295).json(freunde)
+    }catch (err) {
+        console.log({message: `Fehler bei getFreundeValid: ${err}`})
+        res.status(595).send({message: `Fehler bei getFreundeValid: ${err}`})
+    }
+}

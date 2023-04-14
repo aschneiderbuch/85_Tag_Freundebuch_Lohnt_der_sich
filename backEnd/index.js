@@ -22,7 +22,7 @@ import { createFreundeValid, postFreundeValid } from './controller/freundeValidC
 
 const app = express()     // erstellt App
 const BACKEND_PORT = process.env.BACKEND_PORT || 9999
-const FRONTEND_VITE_PORT = process.env.FRONTEND_VITE_PORT || 5173
+const FRONTEND_VITE_PORT = process.env.FRONTEND_VITE_PORT.split(',') || 5173
 
 const upload = multer(
     {
@@ -121,4 +121,3 @@ app.listen(BACKEND_PORT, () => {
     console.log(`Server läuft auf Port: ${BACKEND_PORT}`)
 })
 
-//test

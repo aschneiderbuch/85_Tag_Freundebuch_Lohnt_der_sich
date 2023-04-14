@@ -25,7 +25,7 @@ export const createFreundeValid = async (req, res) => {
                         'e_Mail_Adresse',
                         'beruf',
                         'verdienst',
-                        'selbstständig',
+                        'selbststaendig',
                         'war_schon_Kunde'],
 
                     // ! properties = bsonType = Validierung ob number String usw     
@@ -53,7 +53,7 @@ export const createFreundeValid = async (req, res) => {
                             bsonType: 'string'
                         },
                         verdienst: {
-                            bsonType: 'number'
+                            bsonType: 'int'
                         },
                         selbststaendig: {
                             bsonType: 'string',
@@ -66,10 +66,10 @@ export const createFreundeValid = async (req, res) => {
                     }
                 }
             }
-        })
-        console.log(freunde)
-        // res.status(294).json(freunde) // ! .json() führt zu Fehler so wie independez Array
-        res.status(294).send(freunde)
+        })//.insertOne(req.body)
+        console.log(typeof freunde)
+        // res.status(293).json(freunde) // ! .json() führt zu Fehler so wie independez Array
+        res.status(293).send('hat geklappt') // ! hier darf keine   freunde    rein !!!
     } catch (err) {
         console.log({ message: `Fehler bei postFreundeValid: ${err}` })
         res.status(593).send({ message: `Fehler bei postFreundeValid: ${err}` })
